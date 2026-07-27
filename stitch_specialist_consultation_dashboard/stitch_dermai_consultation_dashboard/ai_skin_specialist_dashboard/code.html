@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Skin Specialist - Clinical Dashboard</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<!-- Design System Implementation -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-secondary-fixed": "#00201d",
+                "on-tertiary-fixed": "#360f00",
+                "surface-dim": "#cbdaff",
+                "on-surface-variant": "#434655",
+                "on-primary-fixed-variant": "#003ea8",
+                "background": "#f9f9ff",
+                "surface-container-highest": "#d8e2ff",
+                "outline": "#737686",
+                "surface-container": "#e9edff",
+                "primary": "#004ac6",
+                "primary-fixed": "#dbe1ff",
+                "secondary": "#006a61",
+                "on-error-container": "#93000a",
+                "on-secondary-container": "#006f66",
+                "error": "#ba1a1a",
+                "surface-bright": "#f9f9ff",
+                "on-secondary-fixed-variant": "#005049",
+                "secondary-fixed": "#89f5e7",
+                "on-tertiary-fixed-variant": "#7d2d00",
+                "surface": "#f9f9ff",
+                "primary-container": "#2563eb",
+                "tertiary": "#943700",
+                "surface-variant": "#d8e2ff",
+                "inverse-on-surface": "#edf0ff",
+                "primary-fixed-dim": "#b4c5ff",
+                "surface-container-lowest": "#ffffff",
+                "on-background": "#081b3a",
+                "inverse-primary": "#b4c5ff",
+                "tertiary-fixed-dim": "#ffb596",
+                "on-primary": "#ffffff",
+                "on-error": "#ffffff",
+                "secondary-fixed-dim": "#6bd8cb",
+                "surface-container-low": "#f1f3ff",
+                "on-surface": "#081b3a",
+                "outline-variant": "#c3c6d7",
+                "tertiary-fixed": "#ffdbcd",
+                "on-secondary": "#ffffff",
+                "secondary-container": "#86f2e4",
+                "tertiary-container": "#bc4800",
+                "surface-container-high": "#e0e8ff",
+                "inverse-surface": "#1f3050",
+                "on-primary-fixed": "#00174b",
+                "error-container": "#ffdad6",
+                "on-tertiary-container": "#ffede6",
+                "on-tertiary": "#ffffff",
+                "surface-tint": "#0053db",
+                "on-primary-container": "#eeefff"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "margin-mobile": "16px",
+                "sm": "12px",
+                "xs": "4px",
+                "margin-desktop": "48px",
+                "lg": "40px",
+                "xl": "64px",
+                "base": "8px",
+                "md": "24px",
+                "gutter": "24px"
+            },
+            "fontFamily": {
+                "caption": ["Inter"],
+                "display-lg": ["Inter"],
+                "headline-lg-mobile": ["Inter"],
+                "headline-md": ["Inter"],
+                "label-md": ["Inter"],
+                "body-lg": ["Inter"],
+                "headline-lg": ["Inter"],
+                "body-md": ["Inter"]
+            },
+            "fontSize": {
+                "caption": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .waveform-anim {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+        .waveform-bar {
+            width: 3px;
+            background: #2563EB;
+            border-radius: 10px;
+            animation: pulse 1.2s infinite ease-in-out;
+        }
+        @keyframes pulse {
+            0%, 100% { height: 10px; }
+            50% { height: 30px; }
+        }
+        .glass-overlay {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+        }
+        .medical-card-shadow {
+            box-shadow: 0px 4px 20px rgba(26, 43, 75, 0.05), 0px 10px 40px rgba(26, 43, 75, 0.03);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col font-body-md text-body-md">
+<!-- Top Navigation Bar -->
+<header class="w-full top-0 sticky bg-surface border-b border-outline-variant shadow-sm z-50 flex justify-between items-center px-margin-desktop py-base">
+<div class="flex flex-col">
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary">AI Skin Specialist</h1>
+<p class="text-on-surface-variant font-caption text-caption">Voice, image, and video based skin consultation assistant</p>
+</div>
+<nav class="hidden md:flex gap-lg items-center">
+<a class="font-label-md text-label-md text-primary border-b-2 border-primary pb-1 cursor-pointer" href="#">Dashboard</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">History</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">Resources</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">Support</a>
+</nav>
+<div class="flex gap-sm">
+<button class="p-base text-on-surface-variant hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-base text-on-surface-variant hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<main class="flex-grow w-full max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-lg grid grid-cols-1 md:grid-cols-2 gap-gutter items-start">
+<!-- Left Column: Patient Input -->
+<section class="space-y-gutter w-full">
+<div class="bg-surface-container-lowest rounded-[24px] p-md medical-card-shadow border border-outline-variant">
+<div class="flex items-center gap-base mb-lg">
+<div class="w-10 h-10 rounded-full bg-[#0D9488]/10 flex items-center justify-center text-[#0D9488]">
+<span class="material-symbols-outlined">person</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Patient Input</h2>
+</div>
+<!-- Section 1: Audio Concern -->
+<div class="mb-xl">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-base">Describe your skin concern</label>
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-lg bg-surface-container-low flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container transition-all group">
+<div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-size: 32px;">mic</span>
+</div>
+<p class="font-label-md text-label-md text-primary">Tap to record voice description</p>
+<p class="font-caption text-caption text-on-surface-variant mt-xs">Record up to 2 minutes of detail</p>
+<!-- Visual Waveform Placeholder -->
+<div class="waveform-anim mt-md">
+<div class="waveform-bar" style="animation-delay: 0.1s"></div>
+<div class="waveform-bar" style="animation-delay: 0.3s"></div>
+<div class="waveform-bar" style="animation-delay: 0.2s"></div>
+<div class="waveform-bar" style="animation-delay: 0.4s"></div>
+<div class="waveform-bar" style="animation-delay: 0.1s"></div>
+<div class="waveform-bar" style="animation-delay: 0.5s"></div>
+</div>
+</div>
+</div>
+<!-- Section 2: Image Upload -->
+<div class="mb-xl">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-base">Upload skin image</label>
+<div class="grid grid-cols-2 gap-base">
+<div class="border-2 border-dashed border-outline-variant rounded-xl aspect-square bg-surface-container-low flex flex-col items-center justify-center cursor-pointer hover:border-primary transition-colors group relative overflow-hidden">
+<img class="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:opacity-20 transition-opacity" data-alt="A macro close-up photograph of a professional medical skin examination under soft, neutral clinical lighting. The background is a clean, bright white healthcare setting, emphasizing a high-contrast and professional aesthetic. The focus is sharp, highlighting fine textures in a clinical, diagnostic manner that feels trustworthy and high-tech." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmfJIekcOT-mqhOxG0dQV4k9K_RVETuqMP9KZ3hSlgNVnbleIHlfhWDnFQb8xW8kfmEPfCmVSc3Js2X2A_qNpwbPohtgz21qdv1czJ-kPExRUELNQFjHAkkR1eJdEKZbYHgWPzcyMuzEAAapG_ZdMFI0Fp_fBkmjw_RrXq5BsfxEOzWvX-ZX62E1A_j4CARbobpYkLRahcomS203i8hLuDpGh7xz1cT5fY8jzNeFeyOCpUn_-3TQhcXqxrUu095kaHOBabovXa9LRd"/>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" style="font-size: 40px;">add_a_photo</span>
+<span class="font-caption text-caption text-on-surface-variant mt-sm">Primary Photo</span>
+</div>
+<div class="border-2 border-dashed border-outline-variant rounded-xl aspect-square bg-surface-container-low flex flex-col items-center justify-center cursor-pointer hover:border-primary transition-colors group">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" style="font-size: 40px;">camera_alt</span>
+<span class="font-caption text-caption text-on-surface-variant mt-sm">Side Angle</span>
+</div>
+</div>
+</div>
+<!-- Helper Note -->
+<div class="flex items-start gap-sm bg-surface-container rounded-xl p-md">
+<span class="material-symbols-outlined text-primary" style="font-size: 20px;">videocam</span>
+<p class="font-caption text-caption text-on-surface-variant">
+                        For better assessment, include a short video showing the affected area. This helps the AI understand the texture and relief of the skin concern.
+                    </p>
+</div>
+<button class="w-full mt-lg bg-primary text-on-primary py-md rounded-xl font-label-md text-label-md hover:bg-primary-container transition-all shadow-md active:scale-[0.98]">
+                    Start AI Analysis
+                </button>
+</div>
+</section>
+<!-- Right Column: Doctor Response -->
+<section class="space-y-gutter w-full sticky top-32">
+<div class="bg-surface-container-lowest rounded-[24px] p-md medical-card-shadow border border-outline-variant min-h-[600px] flex flex-col relative">
+<div class="flex items-center gap-base mb-lg">
+<div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">psychology</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Doctor Response</h2>
+</div>
+<!-- Section 1: Transcript -->
+<div class="mb-lg">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-base">Your speech</label>
+<div class="bg-background border border-outline-variant rounded-xl p-md min-h-[80px] text-on-surface-variant font-body-md italic">
+                        "I've been noticing some redness and itching on my forearm for the last three days. It seems to get worse after..."
+                    </div>
+</div>
+<!-- Section 2: AI Guidance -->
+<div class="mb-lg flex-grow">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-base">Doctor's guidance</label>
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-md min-h-[200px] text-on-surface">
+<div class="flex items-center gap-sm mb-md text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label-md text-label-md">Preliminary Analysis Ready</span>
+</div>
+<p class="mb-md">Based on the visual evidence and your description, there are indications of mild contact dermatitis. The pattern suggests an external irritant.</p>
+<ul class="list-disc list-inside space-y-sm text-on-surface-variant font-body-md">
+<li>Keep the area clean and dry.</li>
+<li>Avoid applying scented lotions or harsh soaps.</li>
+<li>Monitor for spreading or blistering.</li>
+</ul>
+</div>
+</div>
+<!-- Section 3: Audio Output -->
+<div class="mt-auto">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-base">Doctor voice response</label>
+<div class="bg-primary-fixed rounded-full px-md py-sm flex items-center gap-md">
+<button class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center hover:scale-105 transition-transform">
+<span class="material-symbols-outlined">play_arrow</span>
+</button>
+<div class="flex-grow h-1 bg-primary/20 rounded-full relative overflow-hidden">
+<div class="absolute left-0 top-0 h-full bg-primary w-1/3"></div>
+</div>
+<span class="font-caption text-caption text-primary">0:45 / 2:15</span>
+</div>
+</div>
+<!-- Empty State Overlay -->
+<div class="hidden absolute inset-0 glass-overlay rounded-[24px] flex flex-col items-center justify-center p-xl text-center z-10 transition-opacity duration-300" id="empty-state">
+<div class="w-20 h-20 bg-surface-container-high rounded-full flex items-center justify-center text-outline-variant mb-lg">
+<span class="material-symbols-outlined" style="font-size: 48px;">clinical_notes</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-sm">Awaiting Input</h3>
+<p class="text-on-surface-variant">Your consultation summary will appear here after analysis. Please record your concern and upload an image to begin.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Global Footer -->
+<footer class="w-full mt-auto bg-surface-container-lowest border-t border-outline-variant py-md px-margin-desktop flex flex-col items-center gap-sm">
+<p class="font-caption text-caption text-on-surface-variant text-center max-w-2xl">
+            AI guidance is not a medical diagnosis. Consult a licensed doctor for persistent or severe symptoms. 
+            © 2024 AI Skin Specialist. For clinical decision support only. Not a diagnostic substitute.
+        </p>
+<div class="flex gap-lg">
+<a class="font-caption text-caption text-on-surface-variant hover:text-primary transition-colors" href="#">Medical Disclaimer</a>
+<a class="font-caption text-caption text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-caption text-caption text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+</div>
+</footer>
+<script>
+        // Simple logic to demonstrate interactivity
+        document.addEventListener('DOMContentLoaded', () => {
+            const startBtn = document.querySelector('button.bg-primary');
+            const emptyState = document.getElementById('empty-state');
+            
+            // For demo purposes, we start with the results visible, 
+            // but we could toggle this based on app state.
+            
+            // startBtn.addEventListener('click', () => {
+            //     emptyState.classList.add('opacity-0');
+            //     setTimeout(() => emptyState.classList.add('hidden'), 300);
+            // });
+        });
+    </script>
+</body></html>
