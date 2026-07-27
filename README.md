@@ -1,3 +1,15 @@
+---
+title: AI Skin Specialist
+emoji: 🩺
+colorFrom: blue
+colorTo: indigo
+sdk: gradio
+sdk_version: "6.20.0"
+app_file: main.py
+python_version: "3.11"
+pinned: false
+---
+
 # AI Skin Specialist
 
 An AI-powered skin consultation assistant. Describe a skin concern by voice, upload a photo or a short video, and get a spoken response from an AI "doctor" persona with preliminary guidance.
