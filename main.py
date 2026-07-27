@@ -287,4 +287,9 @@ with gr.Blocks(title="AI Skin Specialist") as demo:
 
 if __name__ == "__main__":
     port = os.environ.get("PORT")
-    demo.launch(server_port=int(port) if port else None, css=CUSTOM_CSS, head=HEAD_HTML)
+    demo.launch(
+        server_name="0.0.0.0" if port else None,
+        server_port=int(port) if port else None,
+        css=CUSTOM_CSS,
+        head=HEAD_HTML,
+    )
