@@ -1,7 +1,7 @@
 [project]
 name = "ai-skin-specialist"
 version = "0.1.0"
-description = "Add your description here"
+description = "AI-powered skin consultation assistant that analyzes photos, videos, and voice descriptions to provide preliminary skin care guidance with a spoken response."
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
