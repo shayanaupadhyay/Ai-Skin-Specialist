@@ -6,12 +6,12 @@ An AI-powered skin consultation assistant. Describe a skin concern by voice, upl
 
 ## How it works
 
-1. **Voice input** — you record (or upload) a short description of your concern.
-2. **Transcription** — the recording is transcribed to text with Groq's Whisper model.
-3. **Analysis** — a vision-capable LLM looks at your photo or video alongside the transcript and responds in character as a doctor:
+1. **Voice input** - you record (or upload) a short description of your concern.
+2. **Transcription** - the recording is transcribed to text with Groq's Whisper model.
+3. **Analysis** - a vision-capable LLM looks at your photo or video alongside the transcript and responds in character as a doctor:
    - Photo → analyzed with Groq (`qwen/qwen3.6-27b`), falling back to Gemini automatically if Groq errors.
    - Video → analyzed with Gemini (`gemini-3.6-flash`), since Groq doesn't support video input.
-4. **Voice reply** — the doctor's text response is converted to speech with Deepgram and played back.
+4. **Voice reply** - the doctor's text response is converted to speech with Deepgram and played back.
 
 All of this runs through a Gradio web UI (`main.py`).
 
